@@ -9,22 +9,22 @@ import android.view.ViewGroup;
 
 import com.vladscaesteanu.licenta.R;
 
-public class MovieFragment extends Fragment {
+public class VideoFragment extends Fragment {
 
 
-    public MovieFragment() {
+    public VideoFragment() {
         // Required empty public constructor
     }
 
-    public static MovieFragment newInstance() {
-        return new MovieFragment();
+    public static VideoFragment newInstance() {
+        return new VideoFragment();
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_movie, container, false);
+        View view = inflater.inflate(R.layout.fragment_video, container, false);
         Bundle bundle = getArguments();
         if (bundle != null) {
            // transitionName = bundle.getString("TRANS_NAME");

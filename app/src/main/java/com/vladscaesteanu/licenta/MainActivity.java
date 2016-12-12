@@ -2,7 +2,6 @@ package com.vladscaesteanu.licenta;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -17,10 +16,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.vladscaesteanu.licenta.model.Movie;
-import com.vladscaesteanu.licenta.movie_details.MovieFragment;
-import com.vladscaesteanu.licenta.movie_list.MovieListAdapter;
-import com.vladscaesteanu.licenta.reservation.ReservationFragment;
+import com.vladscaesteanu.licenta.model.Video;
+import com.vladscaesteanu.licenta.movie_details.VideoFragment;
+import com.vladscaesteanu.licenta.movie_list.VideoListAdapter;
 import com.vladscaesteanu.licenta.settings.SettingsFragment;
 
 import java.util.ArrayList;
@@ -29,8 +27,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     ListView listView;
-    MovieListAdapter adapter;
-    List<Movie> movieList;
+    VideoListAdapter adapter;
+    List<Video> videoList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +42,13 @@ public class MainActivity extends AppCompatActivity {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    addFragment(ReservationFragment.newInstance());
+              //      addFragment(ReservationFragment.newInstance());
                 }
             });
         }
 
         listView = (ListView) findViewById(R.id.movie_list);
-        adapter = new MovieListAdapter(this, test());
+        adapter = new VideoListAdapter(this, test());
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -64,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 String titleTransitionName = movieTitle.getTransitionName();
                 bundle.putString("TRANS_NAME", imageTransitionName);
                 bundle.putString("TRANS_TITLE", titleTransitionName);
-                Fragment fragment = MovieFragment.newInstance();
+                Fragment fragment = VideoFragment.newInstance();
                 fragment.setArguments(bundle);
                 Transition changeTransform = TransitionInflater.from(MainActivity.this).
                         inflateTransition(R.transition.change_image_transform);
@@ -114,13 +112,13 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
-    private List<Movie> test() {
-        List<Movie> list = new ArrayList<Movie>();
-        list.add(new Movie(1, "Bau1", "bau1"));
-        list.add(new Movie(2, "Bau2", "bau2"));
-        list.add(new Movie(3, "Bau3", "bau3"));
-        list.add(new Movie(4, "Bau4", "bau4"));
-        list.add(new Movie(5, "Bau5", "bau5"));
+    private List<Video> test() {
+        List<Video> list = new ArrayList<Video>();
+        list.add(new Video(1, "Bau1", "bau1"));
+        list.add(new Video(2, "Bau2", "bau2"));
+        list.add(new Video(3, "Bau3", "bau3"));
+        list.add(new Video(4, "Bau4", "bau4"));
+        list.add(new Video(5, "Bau5", "bau5"));
         return list;
     }
 }

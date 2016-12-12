@@ -3,14 +3,14 @@ package com.vladscaesteanu.licenta.general_control;
 
 
 public class AppManagerProvider {
-    private static AppManagerProvider _instance;
+    private static AppManagerProvider instance;
     private IAppManager appManager;
 
     public static AppManagerProvider getInstance() {
-        if (_instance == null) {
-            _instance = new AppManagerProvider();
+        if (instance == null) {
+            instance = new AppManagerProvider();
         }
-        return _instance;
+        return instance;
     }
 
     private AppManagerProvider() {

@@ -25,12 +25,7 @@ public class ConnectionManager implements IConnectionManager {
     }
 
     @Override
-    public void getReservations() {
-
-    }
-
-    @Override
-    public void sendReservation() {
+    public void getVideoContent() {
 
     }
 }

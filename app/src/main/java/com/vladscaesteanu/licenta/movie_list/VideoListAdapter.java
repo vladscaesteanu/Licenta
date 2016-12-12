@@ -9,14 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vladscaesteanu.licenta.R;
-import com.vladscaesteanu.licenta.model.Movie;
+import com.vladscaesteanu.licenta.model.Video;
 
 import java.util.List;
 
-public class MovieListAdapter extends BaseAdapter {
+public class VideoListAdapter extends BaseAdapter {
 
     private Activity context;
-    private List<Movie> movieList;
+    private List<Video> videoList;
 
     static class ViewHolder {
         public TextView title;
@@ -24,24 +24,24 @@ public class MovieListAdapter extends BaseAdapter {
         public ImageView image;
     }
 
-    public MovieListAdapter(Activity context, List<Movie> movieList) {
+    public VideoListAdapter(Activity context, List<Video> videoList) {
         this.context = context;
-        this.movieList = movieList;
+        this.videoList = videoList;
     }
 
     @Override
     public int getCount() {
-        return movieList.size();
+        return videoList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return movieList.get(position);
+        return videoList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return movieList.get(position).getId();
+        return videoList.get(position).getId();
     }
 
     @Override
@@ -49,7 +49,7 @@ public class MovieListAdapter extends BaseAdapter {
         View rowView = convertView;
         if (rowView == null) {
             LayoutInflater inflater = context.getLayoutInflater();
-            rowView = inflater.inflate(R.layout.movie_list_layout, null);
+            rowView = inflater.inflate(R.layout.video_list_layout, null);
 
             ViewHolder viewHolder = new ViewHolder();
             viewHolder.title = (TextView) rowView.findViewById(R.id.list_movie_title);
@@ -59,9 +59,9 @@ public class MovieListAdapter extends BaseAdapter {
         }
 
         ViewHolder holder = (ViewHolder) rowView.getTag();
-        Movie movie = movieList.get(position);
-        holder.title.setText(movie.getName());
-        holder.description.setText(movie.getDescription());
+        Video video = videoList.get(position);
+        holder.title.setText(video.getName());
+        holder.description.setText(video.getDescription());
 
         holder.image.setTransitionName("image" + position);
         holder.title.setTransitionName("title" + position);
