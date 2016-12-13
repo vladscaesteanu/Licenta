@@ -2,27 +2,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.vladscaesteanu.licenta.movie_details.VideoFragment"
+    tools:context="com.vladscaesteanu.licenta.video_screen.VideoFragment"
     android:orientation="vertical"
     android:background="@android:color/white">
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <VideoView
+            android:id="@+id/videoViewElement"
+            android:layout_width="fill_parent"
+            android:layout_height="240dp" />
+    </FrameLayout>
 
-    <ImageView
-        android:layout_width="@dimen/movie_image"
-        android:layout_height="@dimen/movie_image"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:src="@android:drawable/star_big_on"
-        android:transitionName="movie_image"
-        />
-    
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="movie_title"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:textSize="@dimen/text_large"
-        android:transitionName="movie_title"/>
+        android:transitionName="movie_title"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -30,6 +30,7 @@
         android:text="movie_desc"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:transitionName="movie_desc"/>
+        android:transitionName="movie_desc"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

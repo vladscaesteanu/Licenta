@@ -1,7 +1,6 @@
 package com.vladscaesteanu.licenta;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +16,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.vladscaesteanu.licenta.model.Video;
-import com.vladscaesteanu.licenta.movie_details.VideoFragment;
-import com.vladscaesteanu.licenta.movie_list.VideoListAdapter;
+import com.vladscaesteanu.licenta.video_screen.VideoFragment;
+import com.vladscaesteanu.licenta.video_list.VideoListAdapter;
 import com.vladscaesteanu.licenta.settings.SettingsFragment;
 
 import java.util.ArrayList;
@@ -36,16 +35,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        if (fab != null) {
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-              //      addFragment(ReservationFragment.newInstance());
-                }
-            });
-        }
 
         listView = (ListView) findViewById(R.id.movie_list);
         adapter = new VideoListAdapter(this, test());

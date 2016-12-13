@@ -1,4 +1,4 @@
-package com.vladscaesteanu.licenta.movie_list;
+package com.vladscaesteanu.licenta.video_list;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

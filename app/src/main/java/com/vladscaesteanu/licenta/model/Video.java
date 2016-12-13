@@ -14,8 +14,6 @@ public class Video {
     private String name;
     @SerializedName("duration")
     private int duration;
-    @SerializedName("genre")
-    private String genre;
     @SerializedName("description")
     private String description;
     @SerializedName("rating")
@@ -53,14 +51,6 @@ public class Video {
 
     public void setDuration(int duration) {
         this.duration = duration;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 
     public String getDescription() {
