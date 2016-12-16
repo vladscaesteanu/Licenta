@@ -14,6 +14,7 @@ import com.vladscaesteanu.licenta.R;
 
 public class VideoFragment extends Fragment {
 
+    String transitionName, imageBitmap, transText;
 
     public VideoFragment() {
         // Required empty public constructor
@@ -30,9 +31,9 @@ public class VideoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_video, container, false);
         Bundle bundle = getArguments();
         if (bundle != null) {
-           // transitionName = bundle.getString("TRANS_NAME");
-          //  imageBitmap = bundle.getParcelable("IMAGE");
-          //  transText = bundle.getString("TRANS_TEXT");
+            transitionName = bundle.getString("TRANS_NAME");
+            imageBitmap = bundle.getParcelable("IMAGE");
+            transText = bundle.getString("TRANS_TEXT");
         }
         VideoView videoView = (VideoView) view.findViewById(R.id.videoViewElement);
         MediaController vidControl = new MediaController(this.getActivity());
@@ -42,7 +43,7 @@ public class VideoFragment extends Fragment {
         Uri vidUri = Uri.parse(vidAddress);
         videoView.setVideoURI(vidUri);
         videoView.start();
-
+//TODO orientarea!
         return view;
     }
 

@@ -1,5 +1,6 @@
 package com.vladscaesteanu.licenta.initscreen;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.vladscaesteanu.licenta.MainActivity;
 import com.vladscaesteanu.licenta.R;
 import com.vladscaesteanu.licenta.loginscreen.LoginFragment;
 
@@ -21,6 +23,7 @@ public class InitActivity extends AppCompatActivity {
     FragmentPagerAdapter adapterViewPager;
     ViewPager viewPager;
     boolean tutorial;
+    boolean loggedIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class InitActivity extends AppCompatActivity {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         tutorial = prefs.getBoolean("tutorial", true);
+        loggedIn = prefs.getBoolean("logged", false);
 
         if (tutorial) {
             viewPager = (ViewPager) findViewById(R.id.viewPager);
@@ -36,11 +40,15 @@ public class InitActivity extends AppCompatActivity {
             viewPager.setAdapter(adapterViewPager);
             CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
             indicator.setViewPager(viewPager);
-        } else {
+        } else if (!loggedIn){
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.container_init, LoginFragment.newInstance());
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
             ft.commit();
+        } else {
+            Intent intent = new Intent(this, MainActivity.class);
+            this.finish();
+            startActivity(intent);
         }
     }
 

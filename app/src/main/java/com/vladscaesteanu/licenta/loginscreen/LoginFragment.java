@@ -2,7 +2,9 @@ package com.vladscaesteanu.licenta.loginscreen;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +55,10 @@ public class LoginFragment extends Fragment {
                 }
                 //TODO auth
                 if(authorized) {
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                    prefs.edit().putBoolean("logged", true).apply();
                     Intent intent = new Intent(getActivity(), MainActivity.class);
+                    getActivity().finish();
                     startActivity(intent);
                 }
             }
