@@ -4,6 +4,7 @@ package com.vladscaesteanu.licenta.video_screen;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,10 +36,11 @@ public class VideoFragment extends Fragment {
             imageBitmap = bundle.getParcelable("IMAGE");
             transText = bundle.getString("TRANS_TEXT");
         }
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         VideoView videoView = (VideoView) view.findViewById(R.id.videoViewElement);
-        MediaController vidControl = new MediaController(this.getActivity());
+       /* MediaController vidControl = new MediaController(this.getActivity());
         vidControl.setAnchorView(videoView);
-        videoView.setMediaController(vidControl);
+        videoView.setMediaController(vidControl); */
         String vidAddress = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
         Uri vidUri = Uri.parse(vidAddress);
         videoView.setVideoURI(vidUri);
@@ -47,4 +49,9 @@ public class VideoFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onDestroy() {
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        super.onDestroy();
+    }
 }

@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +31,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     ListView listView;
     VideoListAdapter adapter;
     List<Video> videoList;
@@ -68,11 +70,12 @@ public class MainActivity extends AppCompatActivity {
 
                 fragment.setSharedElementEnterTransition(changeTransform);
                 fragment.setEnterTransition(explodeTransform);
-
+                ft.addToBackStack(fragment.getTag());
                 ft.addSharedElement(movieImage, "image");
                 ft.addSharedElement(movieTitle, "title");
                 ft.add(R.id.activity_container, fragment, fragment.getClass().getSimpleName());
                 ft.commit();
+                Log.d(TAG, "Fragment no is"+fragmentManager.getBackStackEntryCount());
             }
         });
     }
@@ -112,13 +115,16 @@ public class MainActivity extends AppCompatActivity {
                 inflateTransition(R.transition.change_image_transform);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.activity_container, fragment, fragment.getClass().getSimpleName());
+        ft.addToBackStack(fragment.getTag());
         ft.commit();
+        Log.d(TAG, "Fragment no is"+fragmentManager.getBackStackEntryCount());
     }
 
     private void removeFragment(Fragment fragment) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.remove(fragment);
         ft.commit();
+        fragmentManager.popBackStack();
     }
 
     private List<Video> test() {
@@ -133,10 +139,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(fragmentManager.getBackStackEntryCount() > 1) {
-            removeFragment(getCurrentFragment());
-        } else {
+        Log.d(TAG, "Fragment is " + getCurrentFragment());
+        if(getCurrentFragment() == null ) {
             super.onBackPressed();
+        } else {
+            removeFragment(getCurrentFragment());
         }
     }
 
