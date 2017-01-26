@@ -30,6 +30,7 @@ public class VideoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_video, container, false);
+        setRetainInstance(true);
         Bundle bundle = getArguments();
         if (bundle != null) {
             transitionName = bundle.getString("TRANS_NAME");
@@ -38,9 +39,9 @@ public class VideoFragment extends Fragment {
         }
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         VideoView videoView = (VideoView) view.findViewById(R.id.videoViewElement);
-       /* MediaController vidControl = new MediaController(this.getActivity());
+        MediaController vidControl = new MediaController(this.getActivity());
         vidControl.setAnchorView(videoView);
-        videoView.setMediaController(vidControl); */
+        videoView.setMediaController(vidControl);
         String vidAddress = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
         Uri vidUri = Uri.parse(vidAddress);
         videoView.setVideoURI(vidUri);

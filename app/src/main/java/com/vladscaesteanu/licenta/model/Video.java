@@ -21,7 +21,7 @@ public class Video {
     @SerializedName("seen")
     private boolean seen;
     @SerializedName("comments")
-    private ArrayList<String> comments;
+    private ArrayList<Comment> comments;
 
     public int getId() {
         return id;
@@ -77,11 +77,11 @@ public class Video {
         this.seen = seen;
     }
 
-    public ArrayList<String> getComments() {
+    public ArrayList<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(ArrayList<String> comments) {
+    public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
     }
 }
