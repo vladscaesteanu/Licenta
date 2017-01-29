@@ -16,6 +16,7 @@ import com.vladscaesteanu.licenta.R;
 public class VideoFragment extends Fragment {
 
     String transitionName, imageBitmap, transText;
+    int videoLocation;
 
     public VideoFragment() {
         // Required empty public constructor
@@ -46,7 +47,7 @@ public class VideoFragment extends Fragment {
         Uri vidUri = Uri.parse(vidAddress);
         videoView.setVideoURI(vidUri);
         videoView.start();
-//TODO orientarea!
+//TODO orientarea
         return view;
     }
 
