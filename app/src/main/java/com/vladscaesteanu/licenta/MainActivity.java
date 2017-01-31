@@ -135,11 +135,11 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Video> test() {
         List<Video> list = new ArrayList<Video>();
-        list.add(new Video(1, "Bau1", "bau1"));
-        list.add(new Video(2, "Bau2", "bau2"));
-        list.add(new Video(3, "Bau3", "bau3"));
-        list.add(new Video(4, "Bau4", "bau4"));
-        list.add(new Video(5, "Bau5", "bau5"));
+        list.add(new Video(1, "Bau1", "bau1", ""));
+        list.add(new Video(2, "Bau2", "bau2", ""));
+        list.add(new Video(3, "Bau3", "bau3", ""));
+        list.add(new Video(4, "Bau4", "bau4",""));
+        list.add(new Video(5, "Bau5", "bau5",""));
         return list;
     }
 
@@ -159,4 +159,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return this.fragmentManager.findFragmentByTag(this.fragmentManager.getBackStackEntryAt(this.fragmentManager.getBackStackEntryCount() - 1).getName());
     }
+
+
 }

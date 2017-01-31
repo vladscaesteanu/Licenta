@@ -22,15 +22,18 @@ public class Video {
     private boolean seen;
     @SerializedName("comments")
     private ArrayList<Comment> comments;
+    @SerializedName("path")
+    private String path;
 
     public int getId() {
         return id;
     }
 
-    public Video(int id, String name, String description) {
+    public Video(int id, String name, String description, String path) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.path = path;
     }
 
     public void setId(int id) {
@@ -83,5 +86,13 @@ public class Video {
 
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }
