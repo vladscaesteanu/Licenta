@@ -3,6 +3,7 @@ package com.vladscaesteanu.licenta;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     VideoListAdapter adapter;
     List<Video> videoList;
     FragmentManager fragmentManager;
+    String dirPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         fragmentManager = getSupportFragmentManager();
-
+        dirPath = Environment.DIRECTORY_MOVIES;
         listView = (ListView) findViewById(R.id.movie_list);
         adapter = new VideoListAdapter(this, test());
         listView.setAdapter(adapter);
@@ -58,27 +60,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                ImageView movieImage = (ImageView) findViewById(R.id.list_movie_bitmap);
-                TextView movieTitle = (TextView) findViewById(R.id.list_movie_title);
-                TextView movieDesc = (TextView) findViewById(R.id.list_movie_desc);
                 Bundle bundle = new Bundle();
-                String imageTransitionName = movieImage.getTransitionName();
-                String titleTransitionName = movieTitle.getTransitionName();
-                bundle.putString("TRANS_NAME", imageTransitionName);
-                bundle.putString("TRANS_TITLE", titleTransitionName);
+                bundle.putString("VID_NAME", videoList.get(position).getName());
+                bundle.putString("VID_PATH", videoList.get(position).getPath());
+                bundle.putString("VID_DESCRIPTION",videoList.get(position).getDescription());
                 Fragment fragment = VideoFragment.newInstance();
                 fragment.setArguments(bundle);
-                Transition changeTransform = TransitionInflater.from(MainActivity.this).
-                        inflateTransition(R.transition.change_image_transform);
                 Transition explodeTransform = TransitionInflater.from(MainActivity.this).
                         inflateTransition(android.R.transition.fade);
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-
-                fragment.setSharedElementEnterTransition(changeTransform);
                 fragment.setEnterTransition(explodeTransform);
                 ft.addToBackStack(fragment.getTag());
-                ft.addSharedElement(movieImage, "image");
-                ft.addSharedElement(movieTitle, "title");
                 ft.add(R.id.activity_container, fragment, fragment.getClass().getSimpleName());
                 ft.commit();
                 Log.d(TAG, "Fragment no is"+fragmentManager.getBackStackEntryCount());
@@ -134,13 +126,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<Video> test() {
-        List<Video> list = new ArrayList<Video>();
-        list.add(new Video(1, "Bau1", "bau1", ""));
-        list.add(new Video(2, "Bau2", "bau2", ""));
-        list.add(new Video(3, "Bau3", "bau3", ""));
-        list.add(new Video(4, "Bau4", "bau4",""));
-        list.add(new Video(5, "Bau5", "bau5",""));
-        return list;
+        videoList = new ArrayList<Video>();
+        videoList.add(new Video(1, "Funny cat", "Funny cat plays with dog", dirPath + ""));
+        videoList.add(new Video(2, "Monster", "Monster attacks people", dirPath + ""));
+        videoList.add(new Video(3, "Best money making", "Make them monies", dirPath + ""));
+        videoList.add(new Video(4, "Child falls down bike", "Title", dirPath + ""));
+        videoList.add(new Video(5, "Epic showdown", "Incredible match today", dirPath + ""));
+        return videoList;
     }
 
     @Override

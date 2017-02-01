@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.VideoView;
 import com.vladscaesteanu.licenta.R;
 
@@ -25,6 +26,9 @@ public class VideoFragment extends Fragment {
     SeekBar seekBar;
     MediaPlayer mp;
     ImageView imagePlay, imagePause;
+    String videoAddress;
+    String videoName, videoDescription;
+    TextView videoNameText, videoDescText;
 
     public VideoFragment() {
         // Required empty public constructor
@@ -42,11 +46,15 @@ public class VideoFragment extends Fragment {
         setRetainInstance(true);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            transitionName = bundle.getString("TRANS_NAME");
-            imageBitmap = bundle.getParcelable("IMAGE");
-            transText = bundle.getString("TRANS_TEXT");
+            videoAddress = bundle.getString("VID_PATH");
+            videoName = bundle.getString("VID_NAME");
+            videoDescription = bundle.getString("VID_DESCRIPTION");
         }
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        videoNameText = (TextView)view.findViewById(R.id.video_title);
+        videoDescText = (TextView) view.findViewById(R.id.video_desc);
+        videoNameText.setText(videoName);
+        videoDescText.setText(videoDescription);
         videoView = (VideoView) view.findViewById(R.id.videoViewElement);
         seekBar = (SeekBar) view.findViewById(R.id.videoSeekbar);
         imagePlay = (ImageView) view.findViewById(R.id.play);
@@ -101,9 +109,8 @@ public class VideoFragment extends Fragment {
      //   MediaController vidControl = new MediaController(this.getActivity());
      //   vidControl.setAnchorView(videoView);
       //  videoView.setMediaController(vidControl);
-       // String vidAddress = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
-        String vidAddress = "http://www.trilulilu.ro/regele-a-fost-suparat-de-dragnea-pamflet";
-        Uri vidUri = Uri.parse(vidAddress);
+        videoAddress = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
+        Uri vidUri = Uri.parse(videoAddress);
         videoView.setVideoURI(vidUri);
         videoView.start();
 //TODO orientarea
