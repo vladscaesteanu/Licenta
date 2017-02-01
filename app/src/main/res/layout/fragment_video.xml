@@ -13,18 +13,29 @@
             android:layout_width="match_parent"
             android:layout_height="240dp"
             />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:id="@+id/videoStatus" />
         <SeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:id="@+id/videoSeekbar"/>
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_play"
+            android:id="@+id/play"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_pause"
+            android:id="@+id/pause"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            />
     </FrameLayout>
+
 
 
     <TextView

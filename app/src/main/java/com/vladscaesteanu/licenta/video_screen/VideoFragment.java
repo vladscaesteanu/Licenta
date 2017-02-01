@@ -1,11 +1,11 @@
 package com.vladscaesteanu.licenta.video_screen;
 
 
-import android.content.Context;
-import android.graphics.BitmapFactory;
+
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -13,11 +13,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.VideoView;
-
-import com.vladscaesteanu.licenta.MainActivity;
 import com.vladscaesteanu.licenta.R;
 
 public class VideoFragment extends Fragment {
@@ -25,8 +22,9 @@ public class VideoFragment extends Fragment {
     String transitionName, imageBitmap, transText;
     int videoLocation;
     VideoView videoView;
-    ImageView imageButton;
     SeekBar seekBar;
+    MediaPlayer mp;
+    ImageView imagePlay, imagePause;
 
     public VideoFragment() {
         // Required empty public constructor
@@ -50,26 +48,38 @@ public class VideoFragment extends Fragment {
         }
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         videoView = (VideoView) view.findViewById(R.id.videoViewElement);
-        imageButton = (ImageView) view.findViewById(R.id.videoStatus);
         seekBar = (SeekBar) view.findViewById(R.id.videoSeekbar);
+        imagePlay = (ImageView) view.findViewById(R.id.play);
+        imagePause = (ImageView) view.findViewById(R.id.pause);
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
                 seekBar.setMax(mediaPlayer.getDuration());
                 seekBar.postDelayed(onEverySecond, 1000);
+                mp = mediaPlayer;
             }
         });
         videoView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(videoView.isPlaying()) {
-                    videoView.pause();
-                  //  imageButton.setImageBitmap();
-                } else {
-                    videoView.resume();
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (videoView.isPlaying()) {
+                        if (mp != null) {
+                            mp.pause();
+                        }
+                        imagePause.setVisibility(View.VISIBLE);
+                        timerDelayRemoveView(700, imagePause);
+                    } else {
+                        if (mp != null) {
+                            mp.start();
+                        }
+                        imagePlay.setVisibility(View.VISIBLE);
+                        timerDelayRemoveView(700, imagePlay);
+                    }
                 }
-                return true;
-            }
+                    return true;
+                }
+
         });
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -91,7 +101,8 @@ public class VideoFragment extends Fragment {
      //   MediaController vidControl = new MediaController(this.getActivity());
      //   vidControl.setAnchorView(videoView);
       //  videoView.setMediaController(vidControl);
-        String vidAddress = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
+       // String vidAddress = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
+        String vidAddress = "http://www.trilulilu.ro/regele-a-fost-suparat-de-dragnea-pamflet";
         Uri vidUri = Uri.parse(vidAddress);
         videoView.setVideoURI(vidUri);
         videoView.start();
@@ -120,4 +131,13 @@ public class VideoFragment extends Fragment {
 
         }
     };
+
+    public void timerDelayRemoveView(long time, final ImageView v) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                v.setVisibility(View.INVISIBLE);
+            }
+        }, time);
+    }
 }
