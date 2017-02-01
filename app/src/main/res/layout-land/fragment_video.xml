@@ -1,15 +1,49 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.vladscaesteanu.licenta.video_screen.VideoFragment"
     android:orientation="vertical"
     android:background="@android:color/white">
-
-    <VideoView
-        android:id="@+id/myVideo"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true" />
+        android:layout_height="match_parent">
+        <VideoView
+            android:id="@+id/myVideo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:id="@+id/videoSeekbar"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_play"
+            android:id="@+id/play"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_pause"
+            android:id="@+id/pause"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            />
+        <Button
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/fullScreenButon"
+            />
 
-</RelativeLayout>
+    </FrameLayout>
+
+</LinearLayout>
