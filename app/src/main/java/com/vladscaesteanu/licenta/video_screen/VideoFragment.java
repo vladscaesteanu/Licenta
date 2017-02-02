@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -29,6 +30,7 @@ public class VideoFragment extends Fragment {
     String videoAddress;
     String videoName, videoDescription;
     TextView videoNameText, videoDescText;
+    ProgressBar progressBar;
 
     public VideoFragment() {
         // Required empty public constructor
@@ -57,6 +59,8 @@ public class VideoFragment extends Fragment {
         videoDescText.setText(videoDescription);
         videoView = (VideoView) view.findViewById(R.id.videoViewElement);
         seekBar = (SeekBar) view.findViewById(R.id.videoSeekbar);
+        progressBar = (ProgressBar) view.findViewById(R.id.progressbar);
+        progressBar.setVisibility(View.VISIBLE);
         imagePlay = (ImageView) view.findViewById(R.id.play);
         imagePause = (ImageView) view.findViewById(R.id.pause);
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -65,6 +69,7 @@ public class VideoFragment extends Fragment {
                 seekBar.setMax(mediaPlayer.getDuration());
                 seekBar.postDelayed(onEverySecond, 1000);
                 mp = mediaPlayer;
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
         videoView.setOnTouchListener(new View.OnTouchListener() {
@@ -109,7 +114,7 @@ public class VideoFragment extends Fragment {
      //   MediaController vidControl = new MediaController(this.getActivity());
      //   vidControl.setAnchorView(videoView);
       //  videoView.setMediaController(vidControl);
-        videoAddress = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
+       // videoAddress = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
         Uri vidUri = Uri.parse(videoAddress);
         videoView.setVideoURI(vidUri);
         videoView.start();
