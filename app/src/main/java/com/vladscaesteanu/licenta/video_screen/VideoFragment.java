@@ -2,6 +2,7 @@ package com.vladscaesteanu.licenta.video_screen;
 
 
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
@@ -31,6 +33,7 @@ public class VideoFragment extends Fragment {
     String videoName, videoDescription;
     TextView videoNameText, videoDescText;
     ProgressBar progressBar;
+    Button fullScreen;
 
     public VideoFragment() {
         // Required empty public constructor
@@ -111,11 +114,19 @@ public class VideoFragment extends Fragment {
 
             }
         });
+
      //   MediaController vidControl = new MediaController(this.getActivity());
      //   vidControl.setAnchorView(videoView);
       //  videoView.setMediaController(vidControl);
-       // videoAddress = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
-        Uri vidUri = Uri.parse(videoAddress);
+        videoAddress = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
+        final Uri vidUri = Uri.parse(videoAddress);
+        fullScreen = (Button) view.findViewById(R.id.fullScreenButon);
+        fullScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         videoView.setVideoURI(vidUri);
         videoView.start();
 //TODO orientarea
