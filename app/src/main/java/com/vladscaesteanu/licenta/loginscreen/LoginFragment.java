@@ -20,7 +20,7 @@ import com.vladscaesteanu.licenta.R;
 public class LoginFragment extends Fragment {
 
     EditText username;
-    EditText password;
+    //EditText password;
     boolean authorized = false;
 
     public LoginFragment() {
@@ -37,26 +37,26 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         username = (EditText) view.findViewById(R.id.userNameText);
-        password = (EditText) view.findViewById(R.id.passwordText);
+       // password = (EditText) view.findViewById(R.id.passwordText);
         Button login = (Button) view.findViewById(R.id.loginButton);
-        Button register = (Button) view.findViewById(R.id.registerButton);
+       // Button register = (Button) view.findViewById(R.id.registerButton);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 authorized = true;
                 if(username.getText().toString().isEmpty()) {
-                    Toast.makeText(getActivity(), "Username must not be empty" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Name must not be empty" , Toast.LENGTH_SHORT).show();
                     authorized = false;
                 }
-                if(password.getText().toString().isEmpty()) {
+                /*if(password.getText().toString().isEmpty()) {
                     Toast.makeText(getActivity(), "Password must not be empty" , Toast.LENGTH_SHORT).show();
                     authorized = false;
-                }
-                //TODO auth
+                }*/
                 if(authorized) {
                     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     prefs.edit().putBoolean("logged", true).apply();
+                    prefs.edit().putString("username", username.getText().toString()).apply();
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     getActivity().finish();
                     startActivity(intent);

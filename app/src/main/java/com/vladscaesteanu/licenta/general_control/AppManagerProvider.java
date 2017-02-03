@@ -16,9 +16,9 @@ public class AppManagerProvider {
     private AppManagerProvider() {
     }
 
-    public void setAppManager(IAppManager appManager) throws AppManagerException {
+    public void setAppManager(IAppManager appManager) throws RuntimeException {
         if (this.appManager != null) {
-            throw new AppManagerException();
+            throw new RuntimeException();
         }
         this.appManager = appManager;
     }

@@ -139,6 +139,12 @@ public class VideoFragment extends Fragment {
         super.onDestroy();
     }
 
+    @Override
+    public void onResume() {
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        super.onResume();
+    }
+
     private Runnable onEverySecond=new Runnable() {
 
         @Override
