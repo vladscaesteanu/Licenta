@@ -63,9 +63,6 @@ public class VideoListAdapter extends BaseAdapter {
         holder.title.setText(video.getName());
         holder.description.setText(video.getDescription());
 
-        holder.image.setTransitionName("image" + position);
-        holder.title.setTransitionName("title" + position);
-
         return rowView;
     }
 }
