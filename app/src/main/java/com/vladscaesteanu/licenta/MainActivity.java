@@ -2,6 +2,8 @@ package com.vladscaesteanu.licenta;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -121,11 +123,21 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Video> test() {
         videoList = new ArrayList<Video>();
-        videoList.add(new Video(1, "UNIX talkshow", "Debating the UNIX platform", "https://ia802302.us.archive.org/27/items/UNIX1985/UNIX1985_512kb.mp4"));
-        videoList.add(new Video(2, "Master the internet", "How to become an internet master", "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4"));
-        videoList.add(new Video(3, "Windows 95", "Discover the new Windows", "https://ia902505.us.archive.org/10/items/Windows4/Windows4_512kb.mp4"));
-        videoList.add(new Video(4, "Commodore 64", "Exclusive new tech", "https://ia800301.us.archive.org/5/items/CC517_commodore_64/CC517_commodore_64_512kb.mp4"));
-        videoList.add(new Video(5, "Computer networks", "Learn what's new in networks", "https://ia601404.us.archive.org/24/items/Computer1985_3/Computer1985_3_512kb.mp4"));
+        videoList.add(new Video(1, "UNIX talkshow", "Debating the UNIX platform",
+                "https://ia802302.us.archive.org/27/items/UNIX1985/UNIX1985_512kb.mp4",
+                BitmapFactory.decodeResource(getResources(), R.drawable.one)));
+        videoList.add(new Video(2, "Master the internet", "How to become an internet master",
+                "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4",
+                BitmapFactory.decodeResource(getResources(), R.drawable.two)));
+        videoList.add(new Video(3, "Windows 95", "Discover the new Windows",
+                "https://ia902505.us.archive.org/10/items/Windows4/Windows4_512kb.mp4",
+                BitmapFactory.decodeResource(getResources(), R.drawable.three)));
+        videoList.add(new Video(4, "Commodore 64", "Exclusive new tech",
+                "https://ia800301.us.archive.org/5/items/CC517_commodore_64/CC517_commodore_64_512kb.mp4",
+                BitmapFactory.decodeResource(getResources(), R.drawable.four)));
+        videoList.add(new Video(5, "Computer networks", "Learn what's new in networks",
+                "https://ia601404.us.archive.org/24/items/Computer1985_3/Computer1985_3_512kb.mp4",
+                BitmapFactory.decodeResource(getResources(), R.drawable.five)));
         return videoList;
     }
 

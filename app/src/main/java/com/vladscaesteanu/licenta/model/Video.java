@@ -1,6 +1,9 @@
 package com.vladscaesteanu.licenta.model;
 
 
+import android.graphics.Bitmap;
+import android.media.Image;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -24,16 +27,26 @@ public class Video {
     private ArrayList<Comment> comments;
     @SerializedName("path")
     private String path;
+    private Bitmap image;
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
+    }
 
     public int getId() {
         return id;
     }
 
-    public Video(int id, String name, String description, String path) {
+    public Video(int id, String name, String description, String path, Bitmap image) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.path = path;
+        this.image = image;
     }
 
     public void setId(int id) {

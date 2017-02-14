@@ -12,6 +12,7 @@
             android:id="@+id/videoViewElement"
             android:layout_width="match_parent"
             android:layout_height="240dp"
+            android:layout_gravity="center"
             />
         <SeekBar
             android:layout_width="match_parent"

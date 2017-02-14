@@ -12,14 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Skip"
+        android:text="Press done when you are ready to go"
         android:id="@+id/textView3"
         android:layout_gravity="center" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Skip!"
+        android:text="Done"
         android:id="@+id/skipButtonInit"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"/>

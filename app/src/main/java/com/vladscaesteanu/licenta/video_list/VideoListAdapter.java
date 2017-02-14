@@ -62,7 +62,7 @@ public class VideoListAdapter extends BaseAdapter {
         Video video = videoList.get(position);
         holder.title.setText(video.getName());
         holder.description.setText(video.getDescription());
-
+        holder.image.setImageBitmap(video.getImage());
         return rowView;
     }
 }
