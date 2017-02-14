@@ -55,6 +55,7 @@ public class InitActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (!tutorial) {
+            finish();
             super.onBackPressed();
         }
         if (viewPager.getCurrentItem() == 0) {

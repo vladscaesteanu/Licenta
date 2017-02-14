@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         Transition changeTransform = TransitionInflater.from(this).
                 inflateTransition(R.transition.change_image_transform);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.activity_container, fragment, fragment.getClass().getSimpleName());
+        ft.replace(R.id.activity_container, fragment, fragment.getClass().getSimpleName());
         ft.addToBackStack(fragment.getTag());
         ft.commit();
         Log.d(TAG, "Fragment no is"+fragmentManager.getBackStackEntryCount());
@@ -121,11 +121,11 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Video> test() {
         videoList = new ArrayList<Video>();
-        videoList.add(new Video(1, "Funny cat", "Funny cat plays with dog", dirPath + ""));
-        videoList.add(new Video(2, "Monster", "Monster attacks people", dirPath + ""));
-        videoList.add(new Video(3, "Best money making", "Make them monies", dirPath + ""));
-        videoList.add(new Video(4, "Child falls down bike", "Title", dirPath + ""));
-        videoList.add(new Video(5, "Epic showdown", "Incredible match today", dirPath + ""));
+        videoList.add(new Video(1, "UNIX talkshow", "Debating the UNIX platform", "https://ia802302.us.archive.org/27/items/UNIX1985/UNIX1985_512kb.mp4"));
+        videoList.add(new Video(2, "Master the internet", "How to become an internet master", "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4"));
+        videoList.add(new Video(3, "Windows 95", "Discover the new Windows", "https://ia902505.us.archive.org/10/items/Windows4/Windows4_512kb.mp4"));
+        videoList.add(new Video(4, "Commodore 64", "Exclusive new tech", "https://ia800301.us.archive.org/5/items/CC517_commodore_64/CC517_commodore_64_512kb.mp4"));
+        videoList.add(new Video(5, "Computer networks", "Learn what's new in networks", "https://ia601404.us.archive.org/24/items/Computer1985_3/Computer1985_3_512kb.mp4"));
         return videoList;
     }
 

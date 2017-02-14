@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -118,7 +119,7 @@ public class VideoFragment extends Fragment {
      //   MediaController vidControl = new MediaController(this.getActivity());
      //   vidControl.setAnchorView(videoView);
       //  videoView.setMediaController(vidControl);
-        videoAddress = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
+       // videoAddress = "https://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
         final Uri vidUri = Uri.parse(videoAddress);
         fullScreen = (Button) view.findViewById(R.id.fullScreenButon);
         fullScreen.setOnClickListener(new View.OnClickListener() {
@@ -137,6 +138,12 @@ public class VideoFragment extends Fragment {
     public void onDestroy() {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         super.onDestroy();
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        super.onViewStateRestored(savedInstanceState);
     }
 
     @Override
