@@ -4,15 +4,16 @@
     android:layout_height="match_parent"
     tools:context="com.vladscaesteanu.licenta.loginscreen.LoginFragment"
     android:orientation="vertical"
-    android:background="#fff">
+    android:background="#fff"
+    android:gravity="center">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
+        android:text="@string/greeting"
         android:textSize="@dimen/text_large"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"/>
+        />
 
     <EditText
         android:layout_width="200dp"
@@ -21,21 +22,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
          />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:textSize="@dimen/text_large"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"/>
 
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/passwordText"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:password="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -44,11 +31,5 @@
         android:layout_marginTop="10dp"
         android:id="@+id/loginButton"
         android:text="@string/login_text"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:id="@+id/registerButton"
-        android:text="@string/register_text"/>
+
 </LinearLayout>

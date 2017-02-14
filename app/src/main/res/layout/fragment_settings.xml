@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,9 +6,45 @@
     android:background="#fff">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="you are in settings"
-        android:layout_marginTop="100dp"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/settinsGreet"
+        android:layout_marginTop="50dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/optionOne"
+        android:text="@string/optionOne"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="40dp"/>
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/optionTwo"
+        android:text="@string/optionTwo"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="40dp"/>
+
+    <Switch
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:id="@+id/switchOne"
+        android:layout_alignBaseline="@+id/optionOne"
+        android:layout_alignBottom="@+id/optionOne"
+        android:layout_alignParentEnd="true" />
+
+    <Switch
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switchTwo"
+        android:layout_alignBaseline="@+id/optionTwo"
+        android:layout_alignBottom="@+id/optionTwo"
+        android:layout_alignStart="@+id/switchOne" />
+
+</RelativeLayout>
